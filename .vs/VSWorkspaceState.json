@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\add-project",
+    "\\src\\app\\add-user",
+    "\\src\\app\\modal-manager",
+    "\\src\\app\\modal-parenttasks",
+    "\\src\\app\\modal-projects",
+    "\\src\\app\\shared"
+  ],
+  "SelectedNode": "\\src\\app\\shared\\user-api.service.ts",
+  "PreviewInSolutionExplorer": false
+}

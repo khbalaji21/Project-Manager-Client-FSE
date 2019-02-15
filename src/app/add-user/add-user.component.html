@@ -1,0 +1,68 @@
+<form (ngSubmit)="frm.form.valid && save(frm.value)" #frm="ngForm">
+  <div class="container">
+    <div class="form-group">
+      <table class=".table">
+        <tr>
+          <td>
+            <label for="first-name">First Name: </label>
+          </td>
+          <td colspan="3">
+            <input type="text" id="first-name" name="First_Name" class="form-control" [(ngModel)]="user.First_Name" #First_Name="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && First_Name.invalid }" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="last-name">Last Name: </label>
+          </td>
+          <td colspan="3">
+            <input type="text" id="last-name" name="Last_Name" class="form-control" [(ngModel)]="user.Last_Name" #Last_Name="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && Last_Name.invalid }" required />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <button type="submit" #AddUpdate id="AddUpdate" >Add</button>
+          </td>
+          <td>
+            <button type="reset" #rst id="rst">Reset</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>
+<div id="searchdiv" class="form-group">
+  <hr />
+  <input type="text" [(ngModel)]="searchText" placeholder="Search User" />&nbsp;&nbsp;Sort:&nbsp;
+  <button type="button" (click)="sort('First_Name')">First Name</button>&nbsp;&nbsp;
+  <button type="button">Last Name</button>&nbsp;&nbsp;
+  <button type="button">ID</button>
+</div>
+
+<hr />
+<div class="container">
+  <div *ngFor="let user of userAPI | filter:[searchText, 'First_Name'] | sortBy: Last_Name">
+    <table class=".table">
+      <tr>
+        <td width="200px">
+          <span class="label label-default">{{user.First_Name}}</span>&nbsp;&nbsp;
+        </td>
+        <td>
+          <button width="200px" type="button" (click)="modify(user, AddUpdate.id, rst.id)" class="form-control">Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span width="200px" class="label label-default">{{user.Last_Name}}</span>&nbsp;&nbsp;
+        </td>
+        <td>
+          <button width="200px" type="button" (click)="delete(user)" class="form-control">Delete</button>
+        </td>
+      </tr>
+    </table>
+    <hr />
+  </div>
+</div>
+
+

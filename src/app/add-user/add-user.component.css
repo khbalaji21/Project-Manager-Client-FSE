@@ -1,0 +1,31 @@
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 400px;
+}
+
+label {
+  float: right;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  border-top: dotted 1px;
+}
+
+#searchdiv {
+  text-align: center;
+}
+
+tr {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

@@ -1,0 +1,47 @@
+<!--<ng-template #content let-modal>-->
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Select Manager</h4>
+  <!--<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>-->
+</div>
+<hr />
+<div class="container">
+  <input type="text" placeholder="Search User" [(ngModel)]="searchText" class="form-control" />&nbsp;&nbsp;
+</div>
+<hr />
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <!--<label for="dateOfBirth">Pick Manager</label>
+      <div class="input-group">
+        <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+        </div>
+      </div>-->
+      <div>
+        <table class=".table">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <!--<th>Employee ID</th>-->
+            <th>Select</th>
+          </tr>
+          <tr *ngFor="let user of userAPI | filter:[searchText, 'First_Name']">
+            <td>{{user.First_Name}}</td>
+            <td>{{user.Last_Name}}</td>
+            <!--<td>{{user.Employee_ID}}</td>-->
+            <td><button type="button" (click)="setMgr(user)">Select</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>
+<!--<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+</div>-->
+<!--</ng-template>-->
+<!--<button type="button" class="btn btn-default" (click)="open(content)">Search</button>-->
+<!--<pre>{{closeResult}}</pre>-->

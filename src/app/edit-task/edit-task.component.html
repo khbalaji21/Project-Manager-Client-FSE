@@ -1,0 +1,61 @@
+<div class="container">
+  <form (ngSubmit)="frm.form.valid && update(frm.value)" #frm="ngForm">
+    <div class="container">
+      <div class="form-group">
+        <label for="task-name">Task: </label>
+        <!--<input type="text" id="task-name" name="Name" class="form-control" [(ngModel)]="task.Name">-->
+        <input type="text" id="task-name" name="Name" class="form-control" [(ngModel)]="task.Name" #Name="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && Name.invalid }" required>
+        <div *ngIf="frm.submitted && Name.invalid" class="invalid-feedback">
+          <div *ngIf="Name.errors.required">Task Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="task-priority">Priority: </label>
+        <!--<input type="range" min="0" max="100" list="rangeValues" id="taskpriority" oninput="rangeOp.value=taskpriority.value" name="Priority" class="form-control" [(ngModel)]="task.Priority">-->
+        <input type="range" min="0" max="100" list="rangeValues" id="taskpriority" oninput="rangeOp.value=taskpriority.value" name="Priority" class="form-control" [(ngModel)]="task.Priority" #Priority="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && Priority.invalid }" required>
+        <div *ngIf="frm.submitted && Priority.invalid" class="invalid-feedback">
+          <div *ngIf="Priority.errors.required">Priority is required</div>
+        </div>
+        <datalist id="rangeValues">
+          <option value="0">
+          <option value="10">
+          <option value="20">
+          <option value="30">
+          <option value="40">
+          <option value="50">
+          <option value="60">
+          <option value="70">
+          <option value="80">
+          <option value="90">
+          <option value="100">
+        </datalist>
+        <output id="rangeOp"></output>
+      </div>
+      <div class="form-group">
+        <label for="task-startdte">Start Date: </label>
+        <!--<input type="datetime-local" id="task-startdte" name="Start_Date" class="form-control" [(ngModel)]="task.Start_Date">-->
+        <input type="datetime-local" id="task-startdte" name="Start_Date" class="form-control" [(ngModel)]="task.Start_Date" #Start_Date="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && Start_Date.invalid }" required>
+        <div *ngIf="frm.submitted && Start_Date.invalid" class="invalid-feedback">
+          <div *ngIf="Start_Date.errors.required">Start Date is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="task-enddte">End Date: </label>
+        <!--<input type="datetime-local" id="task-enddte" name="End_Date" class="form-control" [(ngModel)]="task.End_Date">-->
+        <input type="datetime-local" id="task-enddte" name="End_Date" class="form-control" [(ngModel)]="task.End_Date" #End_Date="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && End_Date.invalid }" required>
+        <div *ngIf="frm.submitted && End_Date.invalid" class="invalid-feedback">
+          <div *ngIf="End_Date.errors.required">End Date is required</div>
+        </div>
+      </div>
+      <!--<div class="form-group">
+        <label for="user-name">User: </label>
+        <input type="text" id="user-name" name="User" class="form-control" disabled="disabled" value="{{setUsrValue}}" [(ngModel)]="task.User" required>
+        <button type="button" class="btn btn-default" (click)="openUsers()">Search</button>
+      </div>-->
+      <button type="submit" class="btn btn-default">Update</button> &nbsp;
+      <!--<button type="reset" class="btn btn-default">Reset</button>-->
+    </div>
+  </form>
+  <!--{{frm.value | json}}-->
+</div>

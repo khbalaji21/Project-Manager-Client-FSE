@@ -1,0 +1,66 @@
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  /*width: 400px;*/
+}
+
+/*.button {
+  overflow: hidden;
+  float: right;
+}*/
+
+/*#project-manager {
+  width: 650px;
+}*/
+
+#project-enddte, #project-startdte {
+  width: 240px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+#chkbox {
+  width:auto;
+}
+
+td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+input[type="date"]:not(.has-value):before {
+  color: lightgray;
+  content: attr(placeholder);
+}
+
+::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+  color: transparent;
+}
+
+sortByStartDte, sortByEndDte, sortByPriority, sortByCompleted {
+  width: 100px;
+}
+
+#btngrp1 {
+  text-align: right;
+}
+
+/*table, tr, td {
+  border: 1px solid black;
+}*/
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  border-top: dotted 1px;
+}

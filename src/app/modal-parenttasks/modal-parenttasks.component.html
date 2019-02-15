@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Select Parent Task</h4>
+  <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <!--<label for="dateOfBirth">Pick Manager</label>
+      <div class="input-group">
+        <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+        </div>
+      </div>-->
+      <div>
+        <table class=".table">
+          <tr>
+            <th>Task Name</th>
+            <th>Employee ID</th>
+            <th>Select</th>
+          </tr>
+          <tr *ngFor="let task of taskAPI">
+            <td>{{task.Name}}</td>
+            <td>{{task.User}}</td>
+            <td><button type="button" (click)="setParentTask(task)">Select</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>

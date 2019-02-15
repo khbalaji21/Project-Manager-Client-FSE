@@ -1,0 +1,22 @@
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+a:hover, a:active {
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  color: black;
+  font-family: verdana;
+  font-size: 300%;
+  text-align: center;
+}

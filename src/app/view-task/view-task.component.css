@@ -1,0 +1,68 @@
+li {
+  list-style-type: none;
+  position: relative;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+td {
+  width: 100px;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  padding-left: 0.5em;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 800px;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  border-top: dotted 1px;
+}
+
+.search-task-input .search-parenttask-input {
+  float: right;
+  width: 300px;
+}
+
+.search-priorityfrom-text, .search-priorityto-text {
+  max-width: 100%;
+  white-space: nowrap;
+  float: right;
+}
+
+.search-priorityfrom-input, .search-priorityto-input {
+  width: 70px;
+}
+
+.search-startdte-text, .search-enddte-text {
+  max-width: 100%;
+  white-space: nowrap;
+  float: right;
+}
+
+.search-startdte-input, .search-enddte-input {
+  width: 70px;
+}
+
+/* .search-startdte-text, .search-parenttask-text
+{
+    padding-left: 0.5em;
+} */
+/* table, th, td {
+    border: 1px solid black;
+  } */

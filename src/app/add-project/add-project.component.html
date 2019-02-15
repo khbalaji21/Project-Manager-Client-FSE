@@ -1,0 +1,158 @@
+<form (ngSubmit)="frm.form.valid && save(frm.value)" #frm="ngForm">
+  <div class="container">
+    <!--<div class="row">-->
+    <div class="form-group">
+      <table class=".table">
+        <tr>
+          <td>
+            <label for="project-name">Project: </label>
+          </td>
+          <td>
+            <input type="text" id="project-name" name="Name" class="form-control" [(ngModel)]="project.Name" #Name="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && Name.invalid }" required>
+            <div *ngIf="frm.submitted && Name.invalid" class="invalid-feedback">
+              <div *ngIf="Name.errors.required">Project Name is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label>
+              <input id="chkbox" type="checkbox" (change)="DateIndic($event.target.checked)" /> Set Start Date & End Date
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="project-startdte">Start Date: </label>
+          </td>
+          <td>
+            <input [disabled]="!chkd" type="datetime-local" id="project-startdte" name="Start_Date" class="form-control" [(ngModel)]="project.Start_Date" #Start_Date="ngModel">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="project-enddte">End Date: </label>
+          </td>
+          <td>
+            <input [disabled]="!chkd" type="datetime-local" id="project-enddte" placeholder="End Date: " name="End_Date" class="form-control" [(ngModel)]="project.End_Date" #End_Date="ngModel">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="project-priority">Priority: </label>
+          </td>
+          <td>
+            <input type="range" id="projectpriority" value="0" max="30" min="0" oninput="rangeOp.value=projectpriority.value" class="form-control" required>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <output id="rangeOp">0</output>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="project-manager">Manager: </label>
+          </td>
+          <td>
+            <input type="text" id="project-manager" name="Manager_Id" class="form-control" disabled="disabled" value="{{setMgr}}" [(ngModel)]="project.Manager_Id" required>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button class="btn btn-default" type="button" (click)="openModal()">Search</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <!--</div>-->
+    <br />
+    <div class="form-group" id="btngrp1">
+      <button type="submit" class="btn btn-default" #AddUpdate id="AddUpdate">Add Project</button>&nbsp;
+      <button type="reset" class="btn btn-default">Reset</button>
+    </div>
+  </div>
+</form>
+<hr />
+
+<div class="container">
+  <input type="text" placeholder="Search Project" [(ngModel)]="searchText" class="form-control" />&nbsp;&nbsp;
+  <br />
+  Sort:&nbsp;&nbsp;<button type="button" class="btn btn-default" id="sortByStartDte">Start Date</button>&nbsp;&nbsp;
+  <button type="button" class="btn btn-default">End Date</button>&nbsp;&nbsp;
+  <button type="button" class="btn btn-default">Priority</button>&nbsp;&nbsp;
+  <button type="button" class="btn btn-default">Completed</button>&nbsp;&nbsp;
+</div>
+
+<hr />
+<div class="container">
+  <div *ngFor="let project of projectAPI | filter:[searchText, 'Name']">
+    <table>
+      <tr>
+        <td>
+          <table style="border:1px solid;">
+            <tr>
+              <td>Project: </td>
+              <td colspan="3">
+                <label>{{project.Name}}</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                No Of Tasks:
+              </td>
+              <td>
+                <label>8</label>
+              </td>
+              <td>
+                Completed:
+              </td>
+              <td>
+                <label>8</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Start Date:
+              </td>
+              <td>
+                <label>{{project.Start_Date}}</label>
+              </td>
+              <td>
+                End Date:
+              </td>
+              <td>
+                <label>{{project.End_Date}}</label>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td>Pirority</td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" disabled="disabled" value="{{project.Priority}}" />
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td><button *ngIf="!project.status" type="button" (click)="modify(project, AddUpdate.id)">Update</button></td>
+            </tr>
+            <tr>
+              <td><button *ngIf="!project.status" type="button" (click)="suspend(project)">Suspend</button></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br />
+    <br />
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">
+  <form (ngSubmit)="frm.form.valid && save(frm.value)" #frm="ngForm">
+    <div class="container">
+
+      <div class="form-group">
+        <label for="projcet-name">Project: </label>
+        <input type="text" id="project-name" name="Project_Id" class="form-control" disabled="disabled" value="{{setPrjValue}}" [(ngModel)]="task.Project_Id" required>
+        <button type="button" class="btn btn-default" (click)="openProjects()">Search</button>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input id="chkbox" type="checkbox" (change)="disableCntrls($event.target.checked)" /> Parent Task
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="task-name">Task: </label>
+        <input type="text" id="task-name" name="Name" class="form-control" [(ngModel)]="task.Name" #Name="ngModel" required>
+      </div>
+
+      <div class="form-group">
+        <label for="task-priority">Priority: </label>
+        <input [disabled]="chkd" type="range" min="0" max="100" list="rangeValues" id="taskpriority" oninput="rangeOp.value=taskpriority.value" name="Priority" class="form-control" [(ngModel)]="task.Priority" #Priority="ngModel" required>
+        <datalist id="rangeValues">
+          <option value="0">
+          <option value="10">
+          <option value="20">
+          <option value="30">
+          <option value="40">
+          <option value="50">
+          <option value="60">
+          <option value="70">
+          <option value="80">
+          <option value="90">
+          <option value="100">
+        </datalist>
+        <output id="rangeOp"></output>
+      </div>
+
+      <div class="form-group">
+        <label for="task-parent">Parent task: </label>
+        <input type="text" id="task-parent" name="Parent_Task" class="form-control" disabled="disabled" value="{{setPrntValue}}" [(ngModel)]="task.Parent_Task" #Parent_Task="ngModel" required>
+        <button [disabled]="chkd" type="button" class="btn btn-default" (click)="openTasks()">Search</button>
+      </div>
+
+      <div class="form-group">
+        <label for="task-startdte">Start Date: </label>
+        <input [disabled]="chkd" type="date" id="task-startdte" name="Start_Date" class="form-control" [(ngModel)]="task.Start_Date" #Start_Date="ngModel" required>
+      </div>
+
+      <div class="form-group">
+        <label for="task-enddte">End Date: </label>
+        <input [disabled]="chkd" type="date" id="task-enddte" name="End_Date" class="form-control" [(ngModel)]="task.End_Date" #End_Date="ngModel" required>
+      </div>
+
+      <div class="form-group">
+        <label for="user-name">User: </label>
+        <input type="text" id="user-name" name="User" class="form-control" disabled="disabled" value="{{setUsrValue}}" [(ngModel)]="task.User" required>
+        <button [disabled]="chkd" type="button" class="btn btn-default" (click)="openUsers()">Search</button>
+      </div>
+      <!--<button type="submit" onsubmit="save(frm.value)" class="btn btn-default">Add Task</button>-->
+
+      <button type="submit" class="btn btn-default">Add Task</button>&nbsp;
+      <button type="reset" class="btn btn-default">Reset</button>
+
+    </div>
+  </form>
+  <!--{{frm.value | json}}-->
+</div>

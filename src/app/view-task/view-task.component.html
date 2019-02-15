@@ -1,0 +1,53 @@
+<br />
+<div class="container">
+  <div class="form-group">
+    <label for="projcet-name">Project: </label>
+    <input type="text" id="project-name" name="Project" class="form-control" disabled="disabled" value="{{setPrjValue}}" required>
+    <button type="button" class="btn btn-default" (click)="openProjects()">Search</button>
+    Sort by:&nbsp;&nbsp;<button type="button" class="btn btn-default" id="sortByStartDte">Start Date</button>&nbsp;&nbsp;
+    <button type="button" class="btn btn-default">End Date</button>&nbsp;&nbsp;
+    <button type="button" class="btn btn-default">Priority</button>&nbsp;&nbsp;
+    <button type="button" class="btn btn-default">Completed</button>&nbsp;&nbsp;
+    <!--<div *ngIf="frm.submitted && Name.invalid" class="invalid-feedback">
+      <div *ngIf="Name.errors.required">Project Name is required</div>
+    </div>-->
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div *ngFor="let task of taskAPI | filter:[searchText, 'Project_Id']">
+    <table>
+      <tr class="labels-class">
+        <td><h6>Task</h6></td>
+        <td><h6>Parent Task</h6></td>
+        <td><h6>Priotity</h6></td>
+        <td><h6>Start Date</h6></td>
+        <td><h6>End Date</h6></td>
+        <!--<td><h6>Project Id</h6></td>
+        <td><h6>Project Name</h6></td>-->
+      </tr>
+      <tr class="controls-class">
+        <td><span class="label label-default">{{task.Name}}</span></td>
+        <td><span class="label label-default">{{task.Parent_Task}}</span></td>
+        <td><span>{{task.Priority}}</span></td>
+        <td><span>{{task.Start_Date}}</span></td>
+        <td><span>{{task.End_Date}}</span></td>
+        <!--<td><span>{{task.Project_Id}}</span></td>
+        <td><span>{{searchText}}</span></td>-->
+        <td><button *ngIf="!task.status" routerLink="/edit-task/{{task.Id}}">Edit</button></td>
+        <td><button *ngIf="!task.status" (click)="endtask(task)">End Task</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- <div>
+  <ul>
+    <li *ngFor="let task of tasks">
+      <span class="label label-default">{{task.Name}}</span> &nbsp;
+      <span class="label label-default">{{task.ParentId}}</span> &nbsp;
+      <span class="label label-default">{{task.Priority}}</span> &nbsp;
+      <span class="label label-default">{{task.StartDate}}</span> &nbsp;
+      <span class="label label-default">{{task.EndDate}}</span> &nbsp;
+    </li>
+  </ul>
+</div> -->
